@@ -3,7 +3,22 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
+
+    [Header("Animator Controllers")]
+    public RuntimeAnimatorController up;
+    public RuntimeAnimatorController down;
+    public RuntimeAnimatorController left;
+    public RuntimeAnimatorController right;
+
+    [Header("Sprites")]
+    public Sprite upSprite;
+    public Sprite downSprite;
+    public Sprite leftSprite;
+    public Sprite rightSprite;
+
     private Rigidbody2D rb;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     private float hVel;
     private float vVel;
@@ -11,12 +26,56 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        animator.runtimeAnimatorController = down;
     }
 
     void Update()
     {
         hVel = Input.GetAxisRaw("Horizontal");
         vVel = Input.GetAxisRaw("Vertical");
+        animator.enabled = hVel != 0 || vVel != 0;
+
+        if (animator.enabled)
+        {
+            if (vVel > 0)
+            {
+                animator.runtimeAnimatorController = up;
+            }
+            else if (vVel < 0)
+            {
+                animator.runtimeAnimatorController = down;
+            }
+            else if (hVel > 0)
+            {
+                animator.runtimeAnimatorController = right;
+            }
+            else if (hVel < 0)
+            {
+                animator.runtimeAnimatorController = left;
+            }
+        }
+        else
+        {
+            if (animator.runtimeAnimatorController.Equals(up))
+            {
+                spriteRenderer.sprite = upSprite;
+            }
+            else if (animator.runtimeAnimatorController.Equals(down))
+            {
+                spriteRenderer.sprite = downSprite;
+            }
+            else if (animator.runtimeAnimatorController.Equals(right))
+            {
+                spriteRenderer.sprite = rightSprite;
+            }
+            else if (animator.runtimeAnimatorController.Equals(left))
+            {
+                spriteRenderer.sprite = leftSprite;
+            }
+        }
     }
 
     void FixedUpdate()
