@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class BatteryPickup : MonoBehaviour
 {
-    public GameManager gameManager;
+    private GameManager gameManager;
+
+    void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.UpdateBattery(Random.Range(3, 8));
+            gameManager.UpdateBattery(Random.Range(3, 5));
             Destroy(gameObject);
         }
     }

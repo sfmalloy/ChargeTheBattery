@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private bool isDelayed;
     private float batteryLevel;
 
+    private bool currentPhase;
+
     void Start()
     {
         batteryLevel = 20;
@@ -24,6 +26,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine(DelayDischarge());
         }
         batteryLevelText.text = batteryLevel.ToString();
+
+        if (!currentPhase)
+        {
+            StartCoroutine(DoPhase());
+        }
     }
 
     public void UpdateBattery(int delta)
@@ -36,5 +43,13 @@ public class GameManager : MonoBehaviour
         isDelayed = true;
         yield return new WaitForSeconds(decreaseDelay);
         isDelayed = false;
+    }
+
+    IEnumerator DoPhase()
+    {
+        currentPhase = true;
+        yield return new WaitForSeconds(30);
+        decreaseDelay = Mathf.Max(decreaseDelay - 0.05f, 0);
+        currentPhase = false;
     }
 }
