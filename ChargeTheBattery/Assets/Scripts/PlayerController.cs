@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float hVel = Input.GetAxisRaw("Horizontal");
         float vVel = Input.GetAxisRaw("Vertical");
@@ -20,7 +20,5 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(Mathf.Sqrt(0.5f) * hVel, Mathf.Sqrt(0.5f) * vVel) * playerSpeed;
         else
             rb.velocity = new Vector3(hVel, vVel) * playerSpeed;
-
-        print(rb.velocity.magnitude);
     }
 }
