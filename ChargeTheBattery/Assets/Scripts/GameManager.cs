@@ -1,25 +1,40 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public float decreaseRate;
-    public float batteryLevel;
+    public float decreaseDelay;
 
     public Text batteryLevelText;
-    
+
+    private bool isDelayed;
+    private float batteryLevel;
+
+    void Start()
+    {
+        batteryLevel = 20;
+    }
+
+    void Update()
+    {
+        if (!isDelayed)
+        {
+            UpdateBattery(-1);
+            StartCoroutine(DelayDischarge());
+        }
+        batteryLevelText.text = batteryLevel.ToString();
+    }
+
     public void UpdateBattery(int delta)
     {
         batteryLevel = Mathf.Max(0, Mathf.Min(100, batteryLevel + delta));
     }
 
-    void Start()
+    IEnumerator DelayDischarge() 
     {
-        batteryLevel = 100;
-    }
-
-    void Update()
-    {
-        batteryLevelText.text = batteryLevel.ToString();
+        isDelayed = true;
+        yield return new WaitForSeconds(decreaseDelay);
+        isDelayed = false;
     }
 }

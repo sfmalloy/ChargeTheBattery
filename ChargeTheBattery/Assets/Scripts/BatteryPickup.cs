@@ -8,7 +8,7 @@ public class BatteryPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gameManager.batteryLevel += Random.Range(1, 5);
+            gameManager.UpdateBattery(Random.Range(1, 5));
             Destroy(gameObject);
         }
     }

@@ -1243,8 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c170449fee887f429591f826995bce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseRate: 0
-  batteryLevel: 0
+  decreaseDelay: 1.5
   batteryLevelText: {fileID: 748377057}
 --- !u!4 &1675618890
 Transform:

@@ -20,7 +20,7 @@ public class OutletCharger : MonoBehaviour
     {
         if (!isFuseBlown && canCharge && !isDelayed)
         {
-            gameManager.UpdateBattery(1);
+            gameManager.UpdateBattery(3);
             StartCoroutine(DelayCharge());
             if (!timingFuse)
                 StartCoroutine(TimeFuse());
