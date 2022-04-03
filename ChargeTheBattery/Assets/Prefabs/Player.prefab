@@ -98,14 +98,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 15
-  up: {fileID: 9100000, guid: 1b860b66948e1884c91e2018c46de755, type: 2}
-  down: {fileID: 9100000, guid: 2fb9a4fea16023e468b721c3cc6f3ada, type: 2}
-  left: {fileID: 9100000, guid: 6e377e2f742ac204b8adbf2afd5be2ac, type: 2}
-  right: {fileID: 9100000, guid: d0441e5e075eac64da29c5528f9739ef, type: 2}
-  upSprite: {fileID: -4362726033528592793, guid: f359560cf9a4d4945a0c622b769c8c30, type: 3}
-  downSprite: {fileID: 8861930364366530098, guid: fb401534267b98e4c938b53b3a34e2b2, type: 3}
-  leftSprite: {fileID: -7144929735046269998, guid: 6bdb812cc49974c43b7fa537fd3dce14, type: 3}
-  rightSprite: {fileID: -2055084437374008752, guid: b2b11be5c4823c34295b42af2e05f07b, type: 3}
+  up: {fileID: 9100000, guid: 94473662c5eb1964ea9fba4288aa8dbe, type: 2}
+  down: {fileID: 9100000, guid: fa776cb29d79d6243a03d201510e4a57, type: 2}
+  left: {fileID: 9100000, guid: 9788d035ffe51564281a6a50000669d2, type: 2}
+  right: {fileID: 9100000, guid: a0ece615ff3e3e3458d11e90e6f851ff, type: 2}
+  upSprite: {fileID: -3437897008243476389, guid: 78647c9813edb144e82e88414866043b, type: 3}
+  downSprite: {fileID: 5048394783714036792, guid: 2ad93761096b3c14c88ab36ea74f310e, type: 3}
+  leftSprite: {fileID: -4202553260319277322, guid: 04483e4e103e4844ab645526a301efbc, type: 3}
+  rightSprite: {fileID: 2037121046824833479, guid: ac52b94c9e0400f41bbf7777b73f68e3, type: 3}
 --- !u!50 &3948097072878317029
 Rigidbody2D:
   serializedVersion: 4

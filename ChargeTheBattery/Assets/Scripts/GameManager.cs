@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public float decreaseDelay;
+    public int currentPhaseNum;
 
     public Text batteryLevelText;
     public Image batteryLevelSlider;
@@ -16,10 +17,15 @@ public class GameManager : MonoBehaviour
 
     private bool currentPhase;
 
+    readonly Color RED = new Color(201, 46, 46, 255) * (1.0f/255.0f);
+    readonly Color ORANGE = new Color(201, 132, 46, 255) * (1.0f/255.0f);
+    readonly Color GREEN = new Color(77, 201, 46, 255) * (1.0f/255.0f);
+
     void Start()
     {
         batteryLevel = 20;
         originalBatteryWidth = batteryLevelSlider.transform.localScale.x;
+        currentPhaseNum = 1;
     }
 
     void Update()
@@ -37,7 +43,14 @@ public class GameManager : MonoBehaviour
             batteryLevelSlider.transform.localScale.z
         );
 
-        debug.text = decreaseDelay.ToString();
+        if (batteryLevel <= 20)
+            batteryLevelSlider.color = RED;
+        else if (batteryLevel <= 50)
+            batteryLevelSlider.color = ORANGE;
+        else
+            batteryLevelSlider.color = GREEN;
+
+        debug.text = currentPhaseNum.ToString();
 
         if (!currentPhase)
         {
@@ -61,6 +74,8 @@ public class GameManager : MonoBehaviour
     {
         currentPhase = true;
         yield return new WaitForSeconds(30);
+        if (decreaseDelay > 0.05f)
+            currentPhaseNum += 1;
         decreaseDelay = Mathf.Max(decreaseDelay - 0.05f, 0.05f);
         currentPhase = false;
     }
