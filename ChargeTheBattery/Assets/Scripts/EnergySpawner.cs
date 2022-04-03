@@ -22,6 +22,7 @@ public class EnergySpawner : MonoBehaviour
             transform.position.x + transform.lossyScale.x / 2 - 0.5f,
             transform.position.y + transform.lossyScale.y / 2 - 0.5f
         );
+
         isDelayed = false;
         GetComponent<SpriteRenderer>().enabled = false;
         StartCoroutine(DelaySpawn());
